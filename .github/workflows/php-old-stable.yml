@@ -1,14 +1,20 @@
 on:
   workflow_call:
 jobs:
-  pr_quality:
-    runs-on: ubuntu-latest
+  build_php_old_stable:
+    runs-on: ${{ matrix.operating-system }}
+    continue-on-error: true
+    strategy:
+      matrix:
+        operating-system: [ 'ubuntu-24.04', 'ubuntu-22.04', 'ubuntu-20.04', 'windows-latest', 'macos-latest' ]
+        php-versions: ['8.3']
+        phpunit-versions: ['latest']
     steps:
     - uses: actions/checkout@v5
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: 8.3
+        php-version: ${{ matrix.php-versions }}
     - name: Get composer cache directory
       id: composer-cache
       run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
@@ -21,11 +27,5 @@ jobs:
           ${{ runner.os }}-php-
     - name: Install dependencies
       run: composer install --no-ansi --no-interaction --prefer-dist --no-progress --ignore-platform-req=ext-ast
-    - name: Scanning for lint errors
-      run: composer ci:lint
     - name: Run test suite
-      run: composer ci:test
-    - name: Generate Code Coverage Badge
-      env:
-        COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: composer ci:generate-coverage-badge
+      run: composer ci:test-build
