@@ -1,35 +1,18 @@
-## 1.6.0 (2026-01-11)
+# Clutch Property Mgmt GitHub Workflows Change History
+
+## 1.5.0 (2026-02-19)
 
 ### Feat
 
 - remove expensive macos runs
-
-## 1.5.3 (2025-11-12)
-
-### Fix
-
-- remove enterprise-tier images
-
-## 1.5.2 (2025-11-12)
-
-### Feat
-
 - use php 8.4 in auto-merge
 
 ### Fix
 
+- **smoke**: add smoke test, move to clutch-property-mgmt org
+- remove enterprise-tier images
 - update images
-
-## 1.5.1 (2025-06-22)
-
-### Fix
-
 - **coverage.yml**: remove ci:test script run
-
-## 1.5.0 (2025-06-22)
-
-### Fix
-
 - upgrade actions/cache to v4
 
 ## 1.4.2 (2025-06-22)
