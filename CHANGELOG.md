@@ -1,5 +1,11 @@
 # Clutch Property Mgmt GitHub Workflows Change History
 
+## 1.5.6 (2026-02-22)
+
+### Fix
+
+- **smoke.yml**: use verbose setup-php
+
 ## 1.5.5 (2026-02-22)
 
 ### Fix
