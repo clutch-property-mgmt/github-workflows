@@ -1,5 +1,22 @@
 on:
   workflow_call:
+    secrets:
+      db_password:
+        required: true
+    inputs:
+      health_check_endpoint:
+        required: false
+        type: string
+        default: http://localhost:3000/health
+      smoke_test_wait:
+        required: false
+        type: number
+        default: 4
+      smoke_test_server:
+        required: false
+        type: string
+        default: localhost:3000
+
 jobs:
   smoke:
     name: Smoke test
@@ -24,3 +41,9 @@ jobs:
         run: composer install --no-ansi --no-interaction --prefer-dist --no-progress --ignore-platform-req=ext-ast
       - name: Run smoke test
         run: composer ci:test:smoke
+        env:
+          ENVIRONMENT: test
+          SMOKE_TEST_WAIT: ${{ inputs.smoke_test_wait }}
+          SMOKE_TEST_SERVER: ${{ inputs.smoke_test_server }}
+          HEALTH_CHECK_ENDPOINT: ${{ inputs.health_check_endpoint }}
+          DB_PASSWORD: ${{ secrets.db_password }}
