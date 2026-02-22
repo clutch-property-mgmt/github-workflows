@@ -1,5 +1,11 @@
 # Clutch Property Mgmt GitHub Workflows Change History
 
+## 1.5.3 (2026-02-22)
+
+### Fix
+
+- remove code coverage generation from pr quality check
+
 ## 1.5.2 (2026-02-19)
 
 ## 1.5.1 (2026-02-19)
