@@ -22,5 +22,5 @@ jobs:
             ${{ runner.os }}-php-
       - name: Install dependencies
         run: composer install --no-ansi --no-interaction --prefer-dist --no-progress --ignore-platform-req=ext-ast
-      - name: Scanning for lint errors
+      - name: Run smoke test
         run: composer ci:test:smoke
