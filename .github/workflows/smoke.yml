@@ -43,6 +43,7 @@ jobs:
         run: composer ci:test:smoke
         env:
           ENVIRONMENT: test
+          COMPOSER_PROCESS_TIMEOUT: 30
           SMOKE_TEST_WAIT: ${{ inputs.smoke_test_wait }}
           SMOKE_TEST_SERVER: ${{ inputs.smoke_test_server }}
           HEALTH_CHECK_ENDPOINT: ${{ inputs.health_check_endpoint }}
