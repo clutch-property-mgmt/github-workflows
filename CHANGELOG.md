@@ -1,5 +1,7 @@
 # Clutch Property Mgmt GitHub Workflows Change History
 
+## 1.5.4 (2026-02-22)
+
 ## 1.5.3 (2026-02-22)
 
 ### Fix
